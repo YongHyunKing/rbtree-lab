@@ -29,4 +29,7 @@ int rbtree_erase(rbtree *, node_t *);
 
 int rbtree_to_array(const rbtree *, key_t *, const size_t);
 
+//디버깅용
+void print_tree(rbtree *t,node_t* n);
+
 #endif  // _RBTREE_H_
