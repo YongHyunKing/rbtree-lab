@@ -362,10 +362,10 @@ int rbtree_erase(rbtree *t, node_t *z) {
   return 0;
 }
 
-void in_order(const rbtree *t,key_t *arr, node_t *n, int *idx){
-  if(n->left!=t->nil) in_order(t,arr,n->left,idx);
-  arr[(*idx)++] = n->key;
-  if(n->right!=t->nil) in_order(t,arr,n->right,idx);
+void in_order(const rbtree *t,key_t **arr, node_t *n){
+  if(n->left!=t->nil) in_order(t,arr,n->left);
+  *((*arr)++) = n->key;
+  if(n->right!=t->nil) in_order(t,arr,n->right);
 
 }
 
@@ -376,7 +376,7 @@ int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n) {
   // TODO: implement to_array
   if(t->root==NULL) return 0;
   int idx = 0;
-  in_order(t,arr, t->root, &idx);
+  in_order(t,&arr,t->root);
   return 0;
 }
 
